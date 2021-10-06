@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18](https://github.com/achung89-kryptowire/standard-version-nestjs/compare/v0.0.17...v0.0.18) (2021-10-06)
+
+
+### Bug Fixes
+
+* dev ([2aa5b18](https://github.com/achung89-kryptowire/standard-version-nestjs/commit/2aa5b1844ab0a7a1a09231239e8a5b79e48f94bb))
+
 ### [0.0.17](https://github.com/achung89-kryptowire/standard-version-nestjs/compare/v0.0.17-beta.1...v0.0.17) (2021-10-06)
 
 
