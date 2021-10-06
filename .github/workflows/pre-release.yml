@@ -44,7 +44,6 @@ jobs:
       - name: Create prerelease
         run: npm run release
           
-
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
