@@ -47,7 +47,7 @@ jobs:
         run: npm run release
       - uses: EndBug/add-and-commit@v7 # You can change this to use a specific version.
         with:
-          add: ['package.json', 'package-lock.json']
+          add: '["package.json", "package-lock.json", "CHANGELOG.md"]'
 
 
       # - name: Create Release Pull Request or Publish to npm
