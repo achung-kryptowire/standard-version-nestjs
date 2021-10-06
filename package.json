@@ -1,6 +1,6 @@
 {
   "name": "@kw/standard-version-nestjs",
-  "version": "0.0.21",
+  "version": "0.0.22-beta.0",
   "description": "",
   "author": "",
   "main": "dist/main.js",
