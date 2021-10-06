@@ -33,14 +33,23 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
-      
+        
+      - name: setup git config
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
       - name: Create prerelease
         run: npm run release
-      - uses: EndBug/add-and-commit@v7 # You can change this to use a specific version.
         with:
-          add: '["package.json", "package-lock.json", "CHANGELOG.md"]'
-          author_name: Version Bot
-          author_email: <>
+          
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
 
       # - name: Create Release Pull Request or Publish to npm
       #   id: changesets
