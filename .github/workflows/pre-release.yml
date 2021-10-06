@@ -50,6 +50,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
 
+      - name: Publish
+        run: git push --follow-tags origin dev && npm publish
       # - name: Create Release Pull Request or Publish to npm
       #   id: changesets
       #   uses: changesets/action@master
