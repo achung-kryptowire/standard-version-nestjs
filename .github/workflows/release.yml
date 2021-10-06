@@ -1,0 +1,54 @@
+name: release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      issues: read
+      pull-requests: write
+    if: "!contains(github.event.commits[0].message, 'chore(release)')"
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+
+      - name: Setup Node.js 16.x
+        uses: actions/setup-node@master
+        with:
+          node-version: 16.x
+
+      - name: Create .npmrc
+        run: echo ${JFROG_NPMRC_B64} | base64 -d >> .npmrc
+        env:
+          JFROG_NPMRC_B64: ${{ secrets.JFROG_NPMRC_B64 }}
+
+      - name: Install Dependencies
+        run: npm ci
+        
+      - name: setup git config
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+      - name: Create release
+        run: npm run release
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+
+      - name: Publish
+        run: git push --follow-tags origin dev && npm publish
