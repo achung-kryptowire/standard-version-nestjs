@@ -42,7 +42,6 @@ jobs:
 
       - name: Create prerelease
         run: npm run release
-        with:
           
 
       - name: Push changes
