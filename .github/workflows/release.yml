@@ -51,4 +51,4 @@ jobs:
           branch: ${{ github.ref }}
 
       - name: Publish
-        run: git push --follow-tags origin dev && npm publish
+        run: git push --follow-tags origin main && npm publish
