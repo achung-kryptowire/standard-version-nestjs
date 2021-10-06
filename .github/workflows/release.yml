@@ -21,6 +21,7 @@ jobs:
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
+          token: ${{secrets.PAT_TOKEN}}
 
       - name: Setup Node.js 16.x
         uses: actions/setup-node@master
@@ -52,3 +53,6 @@ jobs:
 
       - name: Publish
         run: git push --follow-tags origin main && npm publish
+
+      - name: Push back to dev
+        run: git push --follow-tags origin main:dev
