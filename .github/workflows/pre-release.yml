@@ -5,6 +5,8 @@ on:
     branches:
       - dev
 jobs:
+  if: "!contains(github.event.commits[0].message, 'chore(release)')"
+
   pre-release:
     name: Pre-release
     runs-on: ubuntu-latest
