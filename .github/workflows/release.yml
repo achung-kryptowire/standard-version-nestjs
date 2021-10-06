@@ -1,13 +1,13 @@
-name: pre-release
+name: release
 
 on:
   push:
     branches:
-      - dev
-jobs:
+      - master
 
-  pre-release:
-    name: Pre-release
+jobs:
+  release:
+    name: Release
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -41,8 +41,8 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
 
-      - name: Create prerelease
-        run: npm run pre-release
+      - name: Create release
+        run: npm run release
           
       - name: Push changes
         uses: ad-m/github-push-action@master
