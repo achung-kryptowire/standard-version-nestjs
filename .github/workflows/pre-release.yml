@@ -42,7 +42,7 @@ jobs:
           git config user.email "<>"
 
       - name: Create prerelease
-        run: npm run release
+        run: npm run pre-release
           
       - name: Push changes
         uses: ad-m/github-push-action@master
